@@ -29,7 +29,7 @@ if (*structure)
 {
 (*structure)->prev = frs;
 }
-*sructure = frs;
+*structure = frs;
 }
 /**
  * unique_pall - A function that outputs the data of all nodes in stack
@@ -41,9 +41,9 @@ void unique_pall(stack_t **structure, unsigned int line_number)
 {
 stack_t *ephem;
 (void)line_number;
-for (ephem = *stack; ephem != NULL; ephem = ephem->next)
+for (ephem = *structure; ephem != NULL; ephem = ephem->next)
 {
-printf("%d\n", temp->n);
+printf("%d\n", ephem->n);
 }
 }
 /**
@@ -56,7 +56,7 @@ printf("%d\n", temp->n);
 void unique_free_structure(stack_t **structure)
 {
 stack_t *ephem = NULL;
-if (sttructure == NULL || *structure == NULL)
+if (structure == NULL || *structure == NULL)
 {
 return;
 }

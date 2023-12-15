@@ -7,49 +7,48 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <ctype.h>
-
 /**
- * struct unique_arg - structure for holding unique arguments
- * @argument: integer argument
+ * struct arg_s - structure for holding unique arguments
+ * @arg: integer argument
  * @flag: flag indicating a condition
  *
  * Description: structure for handling unique arguments
  */
-typedef struct unique_arg_s
+typedef struct arg_s
 {
-    int argument;
+    int arg;
     int flag;
-} unique_arg_t;
+} arg_t;
 
-extern unique_arg_t unique_arg;
+extern arg_t arg;
 
 /**
- * struct unique_node - doubly linked list representation of a unique structure
- * @value: integer value
+ * struct stack_s - doubly linked list representation of a unique structure
+ * @n: integer value
  * @previous: points to the previous element of the structure
  * @next: points to the next element of the structure
  *
  * Description: doubly linked list node structure for a unique project
  */
-typedef struct unique_node_s
+typedef struct stack_s
 {
-    int value;
-    struct unique_node_s *previous;
-    struct unique_node_s *next;
-} unique_node_t;
+    int n;
+    struct stack_s *prev;
+    struct stack_s *next;
+} stack_t;
 
 /**
- * struct unique_instruction - opcode and its function
+ * instruction_s - opcode and its function
  * @opcode: the opcode
  * @function: function to handle the opcode
  *
  * Description: opcode and its function for a unique project
  */
-typedef struct unique_instruction_s
+typedef struct instruction_s
 {
     char *opcode;
-    void (*function)(unique_node_t **structure, unsigned int line_number);
-} unique_instruction_t;
+    void (*f)(stack_t **structure, unsigned int line_number);
+} instruction_t;
 
 /**
  * struct unique_line - contents of line and corresponding number
@@ -75,12 +74,11 @@ typedef struct unique_line_s
 typedef struct unique_meta_s
 {
     char *buffer;
-    unique_node_t *structure;
+    stack_t *structure;
     FILE *file;
 } unique_meta_t;
-
 /* Important functions */
-void (*get_unique_func(unique_line_t line, unique_meta_t *meta))(unique_node_t **, unsigned int);
+void (*get_unique_func(unique_line_t line, unique_meta_t *meta))(stack_t **, unsigned int);
 int unique_isalpha(int c);
 
 /* Parse functions */
@@ -109,10 +107,10 @@ void unique_addqu(stack_t **structure, unsigned int line_number);
 void unique_addst(stack_t **structure, unsigned int line_number);
 
 /* Unique math functions */
-void unique_subtract(unique_node_t **structure, unsigned int line_number);
-void unique_add(unique_node_t **structure, unsigned int line_number);
-void unique_divide(unique_node_t **structure, unsigned int line_number);
-void unique_multiply(unique_node_t **structure, unsigned int line_number);
-void unique_modulus(unique_node_t **structure, unsigned int line_number);
+void unique_sub(stack_t **structure, unsigned int line_number);
+void unique_add(stack_t **structure, unsigned int line_number);
+void unique_div(stack_t **structure, unsigned int line_number);
+void unique_mul(stack_t **structure, unsigned int line_number);
+void unique_mod(stack_t **structure, unsigned int line_number);
 
 #endif /* _MONTY_H */
