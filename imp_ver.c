@@ -1,5 +1,4 @@
 #include "monty.h"
-
 arg_t arg = {0, 0};
 
 /**
@@ -51,7 +50,7 @@ return (true);
 /**
  * unique_push_check - A function that confirms if push opcode is
  * being used and sets global argument variable if true
- * @line_number: The struct that contains line contents and line number
+ * @line: The struct that contains line contents and line number
  * @opcode: the opcode being compared
  * @meta: struct containing all memory allocated
  * Return: Absolutely Nothing.

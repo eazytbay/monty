@@ -52,7 +52,8 @@ line.content = NULL;
 meta->file = file;
 meta->structure = NULL;
 meta->buffer = NULL;
-for (line.number = 0; fgets(meta->buffer, pize, meta->file) != NULL; line.number++)
+for (line.number = 0; fgets(meta->buffer, pize, meta->file) != 
+NULL; line.number++)
 {
 unique_parse_line(&line, meta->buffer);
 if (line.content)

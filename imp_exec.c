@@ -7,7 +7,8 @@
  *
  * Return: pointer to the matching function
  */
-void (*get_unique_func(unique_line_t line, unique_meta_t *meta))(stack_t **, unsigned int)
+void (*get_unique_func(unique_line_t line, unique_meta_t *meta))
+(stack_t **, unsigned int)
 {
 unsigned int x;
 instruction_t ops[] = {
